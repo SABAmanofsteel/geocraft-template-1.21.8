@@ -1,0 +1,37 @@
+{
+	"schemaVersion": 1,
+	"id": "geocraft",
+	"version": "${version}",
+	"name": "geocraft",
+	"description": "This is my first mod and its about my country",
+	"authors": [
+		"LambWolf"
+	],
+	"contact": {
+		"homepage": "https://fabricmc.net/",
+		"sources": "https://github.com/FabricMC/fabric-example-mod"
+	},
+	"license": "CC0-1.0",
+	"icon": "assets/geocraft/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.geocraft.Geocraft"
+		],
+		"fabric-datagen": [
+			"com.geocraft.GeocraftDataGenerator"
+		],
+		"client": [
+			"com.geocraft.GeoCraftClient"
+		]
+	},
+	"mixins": [
+		"geocraft.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.18.4",
+		"minecraft": "~1.21.8",
+		"java": ">=21",
+		"fabric-api": "*"
+	}
+}
