@@ -20,7 +20,7 @@ public class ModItems {
         Geocraft.LOGGER.info("Registering Mod Items for "+Geocraft.MOD_ID);
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.INGREDIENTS).register(fabricItemGroupEntries -> {
-            fabricItemGroupEntries.add(khinkali);
+            fabricItemGroupEntries.add(KHINKALI);
         });
     }
 }
