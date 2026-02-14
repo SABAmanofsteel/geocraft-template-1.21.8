@@ -1,5 +1,6 @@
 package com.geocraft;
 
+import com.geocraft.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
 import org.slf4j.Logger;
@@ -11,6 +12,6 @@ public class Geocraft implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-
+		ModItems.registerModItems();
 	}
 }
