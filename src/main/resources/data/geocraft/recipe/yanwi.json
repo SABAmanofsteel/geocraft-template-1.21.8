@@ -1,0 +1,23 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ewe",
+    "ese",
+    "eee"
+  ],
+  "key": {
+    "w": [
+      "minecraft:honeycomb"
+    ],
+    "s": [
+      "minecraft:goat_horn"
+    ],
+    "e": [
+      "minecraft:gold_ingot"
+    ]
+  },
+  "result": {
+    "id": "geocraft:yanwi",
+    "count": 1
+  }
+}
