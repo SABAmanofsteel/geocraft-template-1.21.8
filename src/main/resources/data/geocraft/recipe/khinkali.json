@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " # ",
+    "#C#",
+    "#J#"
+  ],
+  "key": {
+    "#": "minecraft:wheat",
+    "C": "minecraft:cooked_beef",
+    "J": "minecraft:cooked_porkchop"
+  },
+  "result": {
+    "id": "geocraft:khinkali",
+    "count": 9
+  }
+}
