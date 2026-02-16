@@ -1,5 +1,6 @@
 package com.geocraft;
 
+import com.geocraft.block.ModBlocks;
 import com.geocraft.item.ModItems;
 import net.fabricmc.api.ModInitializer;
 
@@ -12,6 +13,7 @@ public class Geocraft implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
+		ModBlocks.registerModBlocks();
 		ModItems.registerModItems();
 		CauldronBrewing.register();
 

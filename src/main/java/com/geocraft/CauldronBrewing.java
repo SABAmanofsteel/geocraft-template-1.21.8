@@ -1,22 +1,19 @@
 package com.geocraft;
 
+import com.geocraft.block.ModBlocks;
 import com.geocraft.item.ModItems;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
 import net.minecraft.block.LeveledCauldronBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.Items;
 import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.stat.Stats;
 import net.minecraft.util.ActionResult;
-import net.minecraft.util.Hand;
 import net.minecraft.util.math.BlockPos;
 
 public class CauldronBrewing {
-    // Custom property to track if cauldron has wine (we'll use a simple registry)
-    private static final java.util.Map<BlockPos, Boolean> WINE_CAULDRONS = new java.util.HashMap<>();
 
     public static void register() {
         UseBlockCallback.EVENT.register((player, world, hand, hitResult) -> {
@@ -24,15 +21,15 @@ public class CauldronBrewing {
             BlockState state = world.getBlockState(pos);
             ItemStack handStack = player.getStackInHand(hand);
 
-            // Check if it's a water cauldron
+            // Step 1: Click water cauldron with grape to turn it into wine cauldron
             if (state.getBlock() == Blocks.WATER_CAULDRON) {
-                int level = state.get(LeveledCauldronBlock.LEVEL);
-
-                // Step 1: Click with grape to turn water into wine
                 if (handStack.isOf(ModItems.GRAPE)) {
                     if (!world.isClient) {
-                        // Mark this cauldron as containing wine
-                        WINE_CAULDRONS.put(pos, true);
+                        int waterLevel = state.get(LeveledCauldronBlock.LEVEL);
+
+                        // Change the block to wine cauldron and preserve the level
+                        world.setBlockState(pos, ModBlocks.WINE_CAULDRON.getDefaultState()
+                                .with(LeveledCauldronBlock.LEVEL, waterLevel));
 
                         // Consume the grape
                         if (!player.isCreative()) {
@@ -45,23 +42,28 @@ public class CauldronBrewing {
                     }
                     return ActionResult.SUCCESS;
                 }
+            }
 
-                // Step 2: Click with yanwi on wine cauldron to get yanwi_savse
-                if (handStack.isOf(ModItems.YANWI) && WINE_CAULDRONS.getOrDefault(pos, false)) {
+            // Step 2: Click wine cauldron with yanwi to get yanwi_savse
+            if (state.getBlock() == ModBlocks.WINE_CAULDRON) {
+                if (handStack.isOf(ModItems.YANWI)) {
                     if (!world.isClient) {
-                        // Give yanwi_savse
-                        if (!player.isCreative()) {
-                            handStack.decrement(1);
-                        }
-                        player.giveItemStack(new ItemStack(ModItems.YANWISAVSE));
+                        int wineLevel = state.get(LeveledCauldronBlock.LEVEL);
 
-                        // Decrease water level
-                        if (level > 1) {
-                            world.setBlockState(pos, state.with(LeveledCauldronBlock.LEVEL, level - 1));
+                        // Consume yanwi
+                        handStack.decrement(1);
+
+                        // Give yanwi_savse
+                        ItemStack result = new ItemStack(ModItems.YANWISAVSE);
+                        if (!player.getInventory().insertStack(result)) {
+                            player.dropItem(result, false);
+                        }
+
+                        // Decrease level or empty the cauldron
+                        if (wineLevel > 1) {
+                            world.setBlockState(pos, state.with(LeveledCauldronBlock.LEVEL, wineLevel - 1));
                         } else {
-                            // Empty the cauldron
                             world.setBlockState(pos, Blocks.CAULDRON.getDefaultState());
-                            WINE_CAULDRONS.remove(pos);
                         }
 
                         // Play sound
