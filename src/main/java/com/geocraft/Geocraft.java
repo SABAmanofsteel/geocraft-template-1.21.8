@@ -13,5 +13,7 @@ public class Geocraft implements ModInitializer {
 	@Override
 	public void onInitialize() {
 		ModItems.registerModItems();
+		CauldronBrewing.register();
+
 	}
 }

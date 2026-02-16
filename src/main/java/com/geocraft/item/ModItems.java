@@ -59,7 +59,7 @@ public class ModItems {
             "grape",
             2,
             0.3f,
-            true,
+            false,
             null,
             false, // eating animation
             null, // No return item
