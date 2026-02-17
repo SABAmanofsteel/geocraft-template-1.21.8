@@ -2,6 +2,7 @@ package com.geocraft.item;
 
 import com.geocraft.Geocraft;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
+import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ConsumableComponent;
 import net.minecraft.component.type.ConsumableComponents;
 import net.minecraft.entity.LivingEntity;
@@ -12,21 +13,67 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.Items;
 import net.minecraft.item.consume.ApplyEffectsConsumeEffect;
 import net.minecraft.item.consume.ConsumeEffect;
+import net.minecraft.item.equipment.ArmorMaterial;
+import net.minecraft.item.equipment.EquipmentAsset;
+import net.minecraft.item.equipment.EquipmentAssetKeys;
 import net.minecraft.item.equipment.EquipmentType;
 import net.minecraft.registry.Registries;
 import net.minecraft.registry.Registry;
 import net.minecraft.registry.RegistryKey;
 import net.minecraft.registry.RegistryKeys;
+import net.minecraft.registry.tag.TagKey;
+import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.Identifier;
 import net.minecraft.world.World;
 import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
+import net.minecraft.entity.EquipmentSlot;
+
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Map;
+
+
 
 public class ModItems {
+
+    public static final int BASE_DURABILITY = 15;
+
+    public static final RegistryKey<EquipmentAsset> GUIDITE_ARMOR_MATERIAL_KEY = RegistryKey.of(EquipmentAssetKeys.REGISTRY_KEY, Identifier.of(Geocraft.MOD_ID, "guidite"));
+
+    public static final TagKey<Item> REPAIRS_GUIDITE_ARMOR = TagKey.of(Registries.ITEM.getKey(), Identifier.of(Geocraft.MOD_ID, "repairs_guidite_armor"));
+
+    public static final ArmorMaterial INSTANCE = new ArmorMaterial(
+            BASE_DURABILITY,
+            Map.of(
+                    EquipmentType.HELMET, 12,
+                    EquipmentType.CHESTPLATE, 8,
+                    EquipmentType.LEGGINGS, 6,
+                    EquipmentType.BOOTS, 3
+            ),
+            30,
+            SoundEvents.ITEM_ARMOR_EQUIP_IRON,
+            0.0F,
+            0.0F,
+            REPAIRS_GUIDITE_ARMOR,
+            GUIDITE_ARMOR_MATERIAL_KEY
+    );
+
+
+    public static final Item SVANURI_QUDI = registerItem(
+            "svanuri_qudi",
+            new Item(new Item.Settings().registryKey(RegistryKey.of(
+                            RegistryKeys.ITEM,
+                            Identifier.of(Geocraft.MOD_ID, "svanuri_qudi")
+                    ))
+                    .armor(INSTANCE, EquipmentType.HELMET)
+                    .maxDamage(EquipmentType.HELMET.getMaxDamage(BASE_DURABILITY))
+            )
+    );
+
+
 
     public static final Item YANWI = registerItem(
             "yanwi",
@@ -141,6 +188,7 @@ public class ModItems {
             fabricItemGroupEntries.add(GRAPE);
             fabricItemGroupEntries.add(YANWI);
             fabricItemGroupEntries.add(YANWISAVSE);
+            fabricItemGroupEntries.add(SVANURI_QUDI);
         });
     }
 
