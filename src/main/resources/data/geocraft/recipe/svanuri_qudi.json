@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "wsw",
+    "s s"
+  ],
+  "key": {
+    "w": [
+      "minecraft:light_gray_wool"
+    ],
+    "s": [
+      "minecraft:black_wool"
+    ]
+  },
+  "result": {
+    "id": "geocraft:svanuri_qudi",
+    "count": 1
+  }
+}
