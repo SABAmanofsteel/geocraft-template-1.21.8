@@ -1,0 +1,6 @@
+{
+  "parent": "fabricshieldlib:item/fabric_shield",
+  "textures": {
+    "shield": "geocraft:entity/svanuri_phari_base"
+  }
+}

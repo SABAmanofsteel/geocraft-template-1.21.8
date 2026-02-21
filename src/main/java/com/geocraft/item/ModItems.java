@@ -29,7 +29,7 @@ import net.minecraft.component.type.FoodComponent;
 import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.EquipmentSlot;
-
+import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -72,7 +72,18 @@ public class ModItems {
                     .maxDamage(EquipmentType.HELMET.getMaxDamage(BASE_DURABILITY))
             )
     );
-
+    public static final Item SVANURI_PHARI = registerItem(
+            "svanuri_phari",
+            new FabricShieldItem(
+                    new Item.Settings()
+                            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Geocraft.MOD_ID, "svanuri_phari")))
+                            .maxDamage(336)
+                            .maxCount(1),
+                    20,          // cooldown ticks
+                    9,           // enchantability
+                    Items.GOLD_INGOT  // repair item
+            )
+    );
 
 
     public static final Item YANWI = registerItem(
@@ -189,6 +200,7 @@ public class ModItems {
             fabricItemGroupEntries.add(YANWI);
             fabricItemGroupEntries.add(YANWISAVSE);
             fabricItemGroupEntries.add(SVANURI_QUDI);
+            fabricItemGroupEntries.add(SVANURI_PHARI);
         });
     }
 

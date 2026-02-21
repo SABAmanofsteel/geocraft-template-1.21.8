@@ -3,7 +3,7 @@
 	"package": "com.geocraft.mixin",
 	"compatibilityLevel": "JAVA_21",
 	"mixins": [
-		"ExampleMixin"
+		"SvanuriPhariMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
