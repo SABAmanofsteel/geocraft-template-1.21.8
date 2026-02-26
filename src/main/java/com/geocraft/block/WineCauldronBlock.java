@@ -12,6 +12,7 @@ public class WineCauldronBlock extends LeveledCauldronBlock {
         this.setDefaultState(this.stateManager.getDefaultState().with(LEVEL, 3));
     }
 
+
     @Override
     protected double getFluidHeight(BlockState state) {
         return (6.0 + state.get(LEVEL) * 3.0) / 16.0;

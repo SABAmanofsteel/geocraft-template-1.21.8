@@ -34,8 +34,8 @@ dependencies {
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_api_version}"
 	// Add specific brewing module
-	include(modImplementation("net.fabricmc.fabric-api:fabric-registry-sync-v0:${project.fabric_api_version}"))
 	modImplementation "maven.modrinth:shieldlib:${project.fabric_shield_lib_version}"
+	modImplementation fileTree(dir: 'libs', include: ['*.jar'])
 	
 }
 
@@ -68,6 +68,9 @@ jar {
 		rename { "${it}_${inputs.properties.archivesName}"}
 	}
 }
+loom {
+	accessWidenerPath = file("src/main/resources/geocraft.accesswidener")
+}
 
 // configure the maven publication
 publishing {
@@ -85,8 +88,7 @@ publishing {
 		// The repositories here will be used for publishing your artifact, not for
 		// retrieving dependencies.
 		maven { url = "https://api.modrinth.com/maven" }
+		maven { url = "https://dl.cloudsmith.io/public/geckolib3/geckolib/maven/" }
 	}
-	loom {
-		accessWidenerPath = file("src/main/resources/geocraft.accesswidener")
-	}
+
 }

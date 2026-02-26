@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "WWW",
+    "WEW",
+    "WWW"
+  ],
+  "key": {
+    "W": "minecraft:wheat",
+    "E": "minecraft:egg"
+  },
+  "result": {
+    "id": "geocraft:khachapuri",
+    "count": 1
+  }
+}
