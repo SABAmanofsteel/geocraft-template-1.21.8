@@ -1,6 +1,7 @@
 package com.geocraft.item;
 
 import com.geocraft.Geocraft;
+import com.geocraft.block.ModBlocks;
 import net.fabricmc.fabric.api.itemgroup.v1.ItemGroupEvents;
 import net.minecraft.component.DataComponentTypes;
 import net.minecraft.component.type.ConsumableComponent;
@@ -30,6 +31,7 @@ import net.minecraft.entity.effect.StatusEffectInstance;
 import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.EquipmentSlot;
 import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
+import net.minecraft.item.BlockItem;
 
 import java.util.List;
 import java.util.ArrayList;

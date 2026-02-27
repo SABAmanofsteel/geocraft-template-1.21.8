@@ -1,0 +1,12 @@
+{
+  "variants": {
+    "bites=0": { "model": "geocraft:block/khachapuri_0" },
+    "bites=1": { "model": "geocraft:block/khachapuri_1" },
+    "bites=2": { "model": "geocraft:block/khachapuri_2" },
+    "bites=3": { "model": "geocraft:block/khachapuri_3" },
+    "bites=4": { "model": "geocraft:block/khachapuri_4" },
+    "bites=5": { "model": "geocraft:block/khachapuri_5" },
+    "bites=6": { "model": "geocraft:block/khachapuri_6" },
+    "bites=7": { "model": "geocraft:block/khachapuri_7" }
+  }
+}

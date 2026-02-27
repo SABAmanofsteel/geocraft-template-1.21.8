@@ -26,6 +26,17 @@ public class ModBlocks {
                     CauldronBehavior.createMap("wine")
             )
     );
+    public static final Block KHACHAPURI = registerBlock(
+            "khachapuri",
+            new KhachapuriBlock(
+                    AbstractBlock.Settings.create()
+                            .strength(0.5f)
+                            .sounds(net.minecraft.sound.BlockSoundGroup.WOOL)
+                            .nonOpaque()
+                            .pistonBehavior(net.minecraft.block.piston.PistonBehavior.DESTROY)
+                            .registryKey(RegistryKey.of(RegistryKeys.BLOCK, Identifier.of(Geocraft.MOD_ID, "khachapuri")))
+            )
+    );
 
     private static Block registerBlock(String name, Block block) {
         registerBlockItem(name, block);
@@ -50,6 +61,9 @@ public class ModBlocks {
 
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.FUNCTIONAL).register(entries -> {
             entries.add(WINE_CAULDRON);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.FOOD_AND_DRINK).register(entries -> {
+            entries.add(KHACHAPURI);
         });
     }
 }
