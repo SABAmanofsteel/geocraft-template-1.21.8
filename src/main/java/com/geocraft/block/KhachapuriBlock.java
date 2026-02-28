@@ -50,7 +50,7 @@ public class KhachapuriBlock extends Block {
         }
 
         // Feed the player (adjust nutrition/saturation as you like)
-        player.getHungerManager().add(4, 0.6f);
+        player.getHungerManager().add(12, 12f);
 
         int bites = state.get(BITES);
 
@@ -65,6 +65,7 @@ public class KhachapuriBlock extends Block {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public boolean canPlaceAt(BlockState state, net.minecraft.world.WorldView world, BlockPos pos) {
         // Must have a solid surface below, just like cake
         return world.getBlockState(pos.down()).isSolid();
