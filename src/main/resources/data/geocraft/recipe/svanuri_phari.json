@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " J ",
+    "JCJ",
+    " J "
+  ],
+  "key": {
+    "C": "minecraft:stick",
+    "J": "minecraft:iron_ingot"
+  },
+  "result": {
+    "id": "geocraft:svanuri_phari",
+    "count": 1
+  }
+}
