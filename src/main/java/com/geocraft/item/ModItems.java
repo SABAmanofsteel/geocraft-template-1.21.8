@@ -32,6 +32,7 @@ import net.minecraft.entity.effect.StatusEffects;
 import net.minecraft.entity.EquipmentSlot;
 import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.item.BlockItem;
+import net.minecraft.item.ToolMaterial;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -84,6 +85,17 @@ public class ModItems {
                     20,          // cooldown ticks
                     9,           // enchantability
                     Items.GOLD_INGOT  // repair item
+            )
+    );
+    public static final Item CLUB = registerItem(
+            "club",
+            new ClubItem(
+                    ToolMaterial.WOOD,        // Change to STONE, IRON, DIAMOND, etc. as needed
+                    7.0f,                     // attack damage bonus (axe is 6-9 depending on material)
+                    -3.2f,                    // attack speed (axe is -3.1f, slightly slow)
+                    new Item.Settings()
+                            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Geocraft.MOD_ID, "club")))
+                            .maxDamage(ToolMaterial.WOOD.durability()) // or pick a number like 59
             )
     );
 
@@ -203,6 +215,9 @@ public class ModItems {
             fabricItemGroupEntries.add(YANWISAVSE);
             fabricItemGroupEntries.add(SVANURI_QUDI);
             fabricItemGroupEntries.add(SVANURI_PHARI);
+        });
+        ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
+            entries.add(CLUB);
         });
     }
 
