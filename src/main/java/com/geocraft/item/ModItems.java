@@ -33,6 +33,7 @@ import net.minecraft.entity.EquipmentSlot;
 import com.github.crimsondawn45.fabricshieldlib.lib.object.FabricShieldItem;
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.ToolMaterial;
+import net.minecraft.item.ToolMaterial;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -96,6 +97,17 @@ public class ModItems {
                     new Item.Settings()
                             .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Geocraft.MOD_ID, "club")))
                             .maxDamage(ToolMaterial.WOOD.durability()) // or pick a number like 59
+            )
+    );
+    public static final Item GORGASALI_SWORD = registerItem(
+            "gorgasali_sword",
+            new GorgasaliSwordItem(
+                    ToolMaterial.DIAMOND,   // material
+                    5.0f,                // attack damage bonus
+                    -2.4f,               // attack speed
+                    new Item.Settings()
+                            .registryKey(RegistryKey.of(RegistryKeys.ITEM, Identifier.of(Geocraft.MOD_ID, "gorgasali_sword")))
+                            .maxDamage(ToolMaterial.IRON.durability())
             )
     );
 
@@ -218,6 +230,7 @@ public class ModItems {
         });
         ItemGroupEvents.modifyEntriesEvent(ItemGroups.COMBAT).register(entries -> {
             entries.add(CLUB);
+            entries.add(GORGASALI_SWORD);
         });
     }
 

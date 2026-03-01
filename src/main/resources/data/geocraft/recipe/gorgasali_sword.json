@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " w ",
+    " w ",
+    " s "
+  ],
+  "key": {
+    "s": "minecraft:blaze_rod",
+    "w": "minecraft:diamond"
+  },
+  "result": {
+    "id": "geocraft:gorgasali_sword",
+    "count": 1
+  }
+}
